@@ -3,18 +3,21 @@ inherit = "sphinx_wagtail_theme"
 stylesheets = [
     "dist/theme.css",
     "uom_custom.css",
+    "pygments-theme-light.css",
+    "pygments-theme-dark.css"
 ]
 sidebars = [
     "searchbox.html",
     "globaltoc.html",
     "uom_logo_sidebar.html",
 ]
-pygments_style = { default = "none" }
+pygments_style = { default = "default" }
 
 [options]
 project_name = "uom_sphinx_wagtail_theme"
 searchbox_text = "Search notes"
-logo = "img/uom_logo_white.png"
+breadcrumb_home = "Home"
+logo = "./img/uom_logo_white.png"
 logo_alt = "University of Manchester"
 logo_height = ""
 logo_url = ""
@@ -22,3 +25,4 @@ logo_width = "88"
 header_links = ""
 footer_links = ""
 github_url = ""
+favicon = "./img/favicon.ico"

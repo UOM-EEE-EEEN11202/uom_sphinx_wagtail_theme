@@ -71,6 +71,49 @@
 </head>
 <body>
     <script type="text/javascript" src="{{ pathto('_static/dist/blocking.js', 1) }}"></script>
+    <!-- Work around some values being stored in localStorage wrapped in quotes -->
+    <script>
+        try {
+            var font_store = localStorage.getItem('uom-sphinx-font');
+            if (font_store.startsWith('"') && font_store.endsWith('"')) {
+                localStorage.setItem('uom-sphinx-font', sidebar.slice(1, sidebar.length - 1));
+            }
+        } catch (e) { }
+        try {
+            var theme_store = localStorage.getItem('uom-sphinx-theme');
+            if (theme_store.startsWith('"') && theme_store.endsWith('"')) {
+                localStorage.setItem('uom-sphinx-theme', sidebar.slice(1, sidebar.length - 1));
+            }
+        } catch (e) { }
+    </script>   
+    <!-- Set font/code theme before content loads to prevent a flash --> 
+    <script>
+        var html = document.querySelector('html');
+        var body   = document.querySelector('body');
+        var font;
+        try { font = localStorage.getItem('uom-sphinx-font'); } catch(e) { }
+        if (font === null || font === undefined) { font = "font-roboto"; }
+        if (font === "font-opendyslexic") {
+            html.classList.remove('font-alt');
+            body.classList.remove('font-alt');
+        } else {
+            html.classList.add('font-alt');
+            body.classList.add('font-alt');
+        }
+        try { theme = localStorage.getItem('uom-sphinx-theme'); } catch(e) { }
+        if (theme === null || theme === undefined) { theme = "theme-light"; }
+        if (theme === "theme-dark") {
+                html.classList.remove('theme-light');
+                body.classList.remove('theme-light');
+                html.classList.add('theme-dark');
+                body.classList.add('theme-dark');
+            } else {
+                html.classList.remove('theme-dark');
+                body.classList.remove('theme-dark');
+                html.classList.add('theme-light');
+                body.classList.add('theme-light');
+            }
+        </script>
     <header id="uom_header_title" class="container-fluid bg-primary">
         <a class="btn btn-sm btn-light skip-to-content-link" href="#main">{{ _('Skip to content') }}</a>
         <div class="container-fluid">
@@ -134,8 +177,8 @@
                             <span class="light-only"><i class="fas fa-moon"></i> {{ _('Dark mode') }}</span>
                         </button>
                         <button id="uom_alt_font_button" class="btn btn-sm btn-light text-decoration-none" type="button">
-                            <span id="default-font"><i class="fas fa-strikethrough"></i>{{ _(' Default font') }}</span>
-                            <span id="alt-font"><i class="fas fa-font"></i>{{ _(' OpenDyslexic font') }}</span>
+                            <span class="alt-only"><i class="fas fa-strikethrough"></i>{{ _(' Default font') }}</span>
+                            <span class="default-only"><i class="fas fa-font"></i>{{ _(' OpenDyslexic font') }}</span>
                         </button>
                         {%- if pagename != "search" -%}
                         {% include "source-buttons.html" %}
@@ -172,7 +215,6 @@
             {% include "footer.html" %}
         </div>
     </footer>
-
     {%- if not embedded %}
         {#- Sphinx >=1.8.0 has this as an external js file. Sphinx 4.0 includes in in script_files #}
         {%- if sphinx_version_info[0] < 4 %}

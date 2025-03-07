@@ -3,8 +3,7 @@
 import os
 from importlib.metadata import version
 
-
-__version__ = version("sphinx-wagtail-theme")
+__version__ = version("uom_sphinx-wagtail_theme")
 __version_full__ = __version__
 
 
@@ -14,7 +13,8 @@ def get_html_theme_path():
     return os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
 
 
-def update_context(app, pagename, templatename, context, doctree):
+def update_context(app, pagename, context):
+    
     """Update the rendering context for a page.
 
     This function makes the theme version available in the Jinja2 html
