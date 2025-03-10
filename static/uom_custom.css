@@ -143,6 +143,9 @@ a:hover {
   background-color: #f4ebf9;
 }
 
+.theme-dark .admonition{
+  background-color: #4f2066;
+}
 
 .admonition-title {
   color: #fff;
