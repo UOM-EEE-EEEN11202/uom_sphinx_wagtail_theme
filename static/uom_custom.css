@@ -139,12 +139,12 @@ a:hover {
 }
 
 
-admonition{
+.admonition{
   background-color: #f4ebf9;
 }
 
 
-admonition .admonition-title {
+.admonition-title {
   color: #fff;
   background-color: #a456c9;
 }
