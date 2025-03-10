@@ -82,3 +82,5 @@
 .theme-light .highlight .py{color:#19177C;}/*Name.Property*/
 .theme-light .highlight .p{color:#19177C;}/*Punctuation*/
 .theme-light .highlight .x{color:#19177C;}/*?*/
+.theme-light .highlight {color:#19177C;}
+.theme-light .highlight .linenos{color:#19177C;}

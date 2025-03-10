@@ -137,3 +137,14 @@ a:hover {
 .navbar-brand:hover{
   color: #6c6c6c !important;
 }
+
+
+admonition{
+  background-color: #f4ebf9;
+}
+
+
+admonition .admonition-title {
+  color: #fff;
+  background-color: #a456c9;
+}
