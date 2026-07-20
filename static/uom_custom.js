@@ -22,11 +22,11 @@
             }
 
             if (font === "font-opendyslexic") {
-                html.classList.remove('font-alt');
-                body.classList.remove('font-alt');
-            } else {
                 html.classList.add('font-alt');
                 body.classList.add('font-alt');
+            } else {
+                html.classList.remove('font-alt');
+                body.classList.remove('font-alt');
             }
 
             if (!store) { // seems to be the wrong way round! Not clear why this is

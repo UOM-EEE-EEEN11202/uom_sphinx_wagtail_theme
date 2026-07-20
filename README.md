@@ -4,6 +4,7 @@ University of Manchester Sphinx theme.
 This has added University of Manchester branding/colouring. It has also added an alternative font mode, where the text 
 is displayed using OpenDyslexic rather than the default Roboto.
 
+
 ## Usage
 
 It is intended to be included as a Git submodule in other Sphinx projects. 
